@@ -12,22 +12,15 @@ function appendCds() {
 
             $('.cds-container').empty();
             for (var i = 0; i < data.length; i++) {
-                //Fill handlebars template
-                var context = {
-                    'poster': data[i].poster,
-                    'title': data[i].title,
-                    'year': data[i].year,
-                    'author': data[i].author,
-                }
                 //If there's no author filter selected
                 if ($('.authors').val() == '') {
                     //Display all cds
-                    $('.cds-container').append(template(context))
+                    $('.cds-container').append(template(data[i]))
                 } //If there's an author filter else
                 else {
                     //Append cds whose author matches selected one
-                    if ($('.authors').val() == context.author) {
-                        $('.cds-container').append(template(context))
+                    if ($('.authors').val() == data[i].author) {
+                        $('.cds-container').append(template(data[i]))
                     }
                 }
             }
